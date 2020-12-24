@@ -1,0 +1,8 @@
+{
+	"env": {
+		"DB_USER":"dragon",
+		"DB_PWD":"L81fFk8C2mCXIPLy",
+		"DB_NAME":"dragon",
+		"LIMIT_PRODUCTS": "12"
+	}
+}
