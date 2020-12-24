@@ -1,0 +1,23 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.image img{
+    width: 100px;
+    /* height: 100px; */
+    object-fit: cover !important;
+}
+
+.product p {
+    font-size: 14px;
+}
+
+.product span {
+    font-size: 12px;
+}
+.product button {
+    width: 100%;
+}
