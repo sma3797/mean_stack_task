@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../products.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -11,38 +12,42 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  timer:any = null;
   products:any = [];
   query:any = "";
   skip:any = 0;
+  loading:boolean = false;
 
   constructor(private productsService: ProductsService) {
+    this.loading = true;
     this.productsService.getProducts({ query: this.query }, this.skip).subscribe(products => {
       this.products = [this.products, ...products.products].splice(1);
-      console.log("object", this.products);
+      this.loading = false;
     })
   }
 
   loadMore(): void {
-    console.log(this.query)
+    this.loading = true;
     const tempLength = this.products?.length
     this.productsService.getProducts({ query: this.query }, tempLength).subscribe(products => {
-      const tempProducts = [...this.products]
+      const tempProducts = [...this.products] 
       this.products = [...tempProducts, ...products.products];
+      this.loading = false;
     })
   }
 
   searchProduct(event:any):void { 
-    this.query =(<HTMLInputElement>event.target).value
-    this.productsService.getProducts({ query: event.target.value }, 0).subscribe(products => {
-      this.products = [...products.products];
-    })
-    // const timer = setTimeout(() => {
-    //   try {
-    //     console.log(event.target.value)
-		// 	} catch (err) {}
-		// }, 500);
-		// return clearTimeout(timer);
+    clearTimeout(this.timer);
+    this.loading = true;
+    this.timer = setTimeout(() => {
+      try {
+        this.query =(<HTMLInputElement>event.target).value
+        this.productsService.getProducts({ query: event.target.value }, 0).subscribe(products => {
+          this.products = [...products.products];
+          this.loading = false;
+        })
+			} catch (err) {}
+		}, 500);
   }
 
 }

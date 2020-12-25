@@ -11,3 +11,48 @@
     justify-content: space-around;
     grid-template-columns: repeat(12, auto);
 }
+
+ @media only screen and (max-width: 600px) {
+     .product{
+         grid-template-columns: repeat(2, auto);
+     }
+ }
+
+ @media only screen and (min-width: 768px) {
+     .product{
+         grid-template-columns: repeat(4, auto);
+     }
+ }
+ 
+ @media only screen and (min-width: 992px) {
+     .product{
+        grid-template-columns: repeat(8, auto); 
+     }
+ }
+ 
+ @media only screen and (min-width: 1200px) {
+     .product{
+         grid-template-columns: repeat(12, auto);
+     }
+ } 
+
+button{
+    background-color: #00c2d1;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 6px 10px;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+}
+
+input {
+    border: 1px solid #00c2d1;
+    color: black;
+    padding: 5px 10px;
+    width:320px;
+    border-radius: 12px;
+    outline: 0;
+}
