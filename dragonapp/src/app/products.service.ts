@@ -20,5 +20,9 @@ export class ProductsService {
   getProducts(body:object, skip:number):Observable<any> {
     return this.http.post<any>(`${this.url}/all-products?skip=${skip}`, body, httpOptions)
   }
+
+  getProduct(body:object):Observable<any> {
+    return this.http.post<any>(`${this.url}/single-product`, body, httpOptions)
+  }
 }
   

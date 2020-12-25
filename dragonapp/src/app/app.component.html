@@ -1,14 +1,4 @@
 <header>
-  <p>{{ title }}</p>
+    <p>{{ title }}</p>
 </header>
-<div class="container">
-  <input type="input" placeholder="Search Product" />
-  <div class="product">
-    <app-product *ngFor="let product of products" [product]="product">
-    </app-product>
-  </div>
-  <div>
-    <button (click)="loadMore()">Load More Products</button>
-  </div>
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

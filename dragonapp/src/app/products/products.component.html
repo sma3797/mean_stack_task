@@ -1,0 +1,11 @@
+
+<div class="container">
+    <input type="input" placeholder="Search Product" (input)="searchProduct($event)" />
+    <div class="product">
+      <app-product *ngFor="let product of products" [product]="product">
+      </app-product>
+    </div>
+    <div>
+      <button (click)="loadMore()">Load More Products</button>
+    </div>
+</div>
